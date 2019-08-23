@@ -75,13 +75,13 @@ namespace SDS
 
                             for (int a = 0; a < quantityAgents; a++)
                             {
-                               if (a != i) lines.ElementAt(d).Add(agents.ElementAt(a).location.point[d]);
+                               lines.ElementAt(d).Add(agents.ElementAt(a).location.point[d]);
                             }
 
                             lines.ElementAt(d).Sort();
 
-                            bounds[d, 1] = lines.ElementAt(d).ElementAt(0);
-                            bounds[d, 2] = lines.ElementAt(d).ElementAt(lines.Count());
+                            bounds[d, 0] = lines.ElementAt(d).ElementAt(0);
+                            bounds[d, 1] = lines.ElementAt(d).ElementAt(lines.Count()-1);
 
                         }
 

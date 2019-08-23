@@ -57,7 +57,7 @@ namespace SDS
 
         public static AgentPoint getHypothesis(AgentPoint p)
         {
-            AgentPoint o = new AgentPoint();
+            AgentPoint o = new AgentPoint(new double[AgentPoint.dimention]);
             
             for (int i = 0; i < AgentPoint.dimention; i++)
             {
@@ -70,10 +70,11 @@ namespace SDS
 
         public static AgentPoint getNewLocation(int dim, double[,] bounds)
         {
-            AgentPoint o = new AgentPoint();
+
+            AgentPoint o = new AgentPoint(new double[AgentPoint.dimention]);
 
             for (int i = 0; i < dim;i++) { 
-                o.point[i] = bounds[i,1] + 0.5 * (bounds[i, 2] - bounds[i, 1]);
+                o.point[i] = bounds[i,0] + 0.5 * (bounds[i, 1] - bounds[i, 0]);
             }
 
             return o;
