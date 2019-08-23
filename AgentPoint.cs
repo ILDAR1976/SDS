@@ -24,8 +24,6 @@ namespace SDS
         {
             this.point = point;
         }
-        
-       
        
         public static AgentPoint generateLocation(AgentPoint a)
         {

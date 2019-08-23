@@ -28,8 +28,28 @@ namespace SDS
                 agents.Add(a);
             }
 
+
+            int m = 0;
+
+
+            Console.WriteLine("Before ...");
+
+            foreach (var item in agents)
+            {
+                Console.WriteLine("Agent {0}: ", ++m);
+
+                GeneralFunctions.printAgentInfo(item);
+
+                Console.WriteLine();
+            }
+
+
+
+            int count = 0;
+
             while (true)
             {
+                count++;
 
                 //Testing
 
@@ -47,7 +67,24 @@ namespace SDS
                     }
                 }
 
-                if (activeCount == quantityAgents) break;
+                if (activeCount == quantityAgents)
+                {
+                    int i = 0;
+
+                    foreach(var item in agents)
+                    {
+                        Console.WriteLine("Agent {0}: ", ++i);
+
+                        GeneralFunctions.printAgentInfo(item);
+
+                       
+
+                        Console.WriteLine();
+                    }
+
+                    Console.WriteLine("Iteration {0}", count);
+                    break;
+                }
 
                 //Deffusion
 
@@ -88,11 +125,7 @@ namespace SDS
                         agents[i].location = AgentPoint.getNewLocation(AgentPoint.dimention, bounds);
                     }
 
-                    Console.WriteLine("Agent {0}: ",i + 1);
-
-                    GeneralFunctions.printAgentInfo(agents[i]);
-
-                    Console.WriteLine();
+                   
                 }
 
             }
