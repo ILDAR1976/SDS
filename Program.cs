@@ -32,18 +32,14 @@ namespace SDS
             int m = 0;
 
 
-            Console.WriteLine("Before ...");
+            Console.WriteLine("\r\rBEFORE ... \r");
 
             foreach (var item in agents)
             {
                 Console.WriteLine("Agent {0}: ", ++m);
-
                 GeneralFunctions.printAgentInfo(item);
-
                 Console.WriteLine();
             }
-
-
 
             int count = 0;
 
@@ -63,7 +59,6 @@ namespace SDS
                     {
                         agents[i].active = true;
                         activeCount++;
-                        
                     }
                 }
 
@@ -71,14 +66,12 @@ namespace SDS
                 {
                     int i = 0;
 
-                    foreach(var item in agents)
+                    Console.WriteLine("\r AFTER ... \r");
+
+                    foreach (var item in agents)
                     {
                         Console.WriteLine("Agent {0}: ", ++i);
-
                         GeneralFunctions.printAgentInfo(item);
-
-                       
-
                         Console.WriteLine();
                     }
 
@@ -104,30 +97,20 @@ namespace SDS
                     {
                         List<List<double>> lines = new List<List<double>>();
                         double[,] bounds =  new double[AgentPoint.dimention, 2];
-
                         for (int d = 0; d < AgentPoint.dimention; d++)
                         {
-                        
                             lines.Add(new List<double>());
-
                             for (int a = 0; a < quantityAgents; a++)
                             {
-                               lines.ElementAt(d).Add(agents.ElementAt(a).location.point[d]);
+                               if (!(a==i)) lines.ElementAt(d).Add(agents.ElementAt(a).location.point[d]);
                             }
-
                             lines.ElementAt(d).Sort();
-
                             bounds[d, 0] = lines.ElementAt(d).ElementAt(0);
-                            bounds[d, 1] = lines.ElementAt(d).ElementAt(lines.Count()-1);
-
+                            bounds[d, 1] = lines.ElementAt(d).ElementAt(lines.ElementAt(d).Count()-1);
                         }
-
                         agents[i].location = AgentPoint.getNewLocation(AgentPoint.dimention, bounds);
                     }
-
-                   
                 }
-
             }
 
             Console.WriteLine("Are you wish to exit this application?");
